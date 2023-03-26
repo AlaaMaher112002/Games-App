@@ -1,0 +1,17 @@
+#home{
+    height: 700px;
+    width: 100%;
+    background-image: url(../img/bg.jpg);
+    background-size: 100% 100%;
+    overflow: hidden;
+}
+.overlay{
+    background-color: rgba(0, 0, 0,0.7);
+}
+.navbar-brand{
+    font-family: 'Lobster', cursive;
+}
+.navbar{
+    background-color: #457b9d;
+    color: white !important;
+}
