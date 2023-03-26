@@ -9,32 +9,32 @@ var games=[];
 async function getGame(){
     var response=await fetch('https://free-to-play-games-database.p.rapidapi.com/api/games?category=Shooter', options);
     var games=await response.json();
-    console.log(games);
     display(games)
 }
 getGame();
 
-function display(games){
-    console.log(games);
-    var cols=document.createElement('div');
-    for(var i=0;i<games.length;i++){
-        cols.innerHTML+=`
+function display(myGames){
+    var cols=""
+    myGames.forEach(element => {
+        cols+=`
         <div class="col-md-3">
         <div class="game overflow-hidden ">  
-        <img class="w-100  recipesStyle" src="${games[i][game_url]}" id="img">
-        <h6 class="pt-4">${games[i][title]}</h6>
-        <h5>${games[i][short_description] }</h5>   
+        <img class="w-100  recipesStyle" src="${element['game_url']}" id="img">
+        <h6 class="pt-4">${element['title']}</h6>
+        <h5>${element['short_description'] }</h5>   
         </div>
         </div>
         `
-        console.log(cols,"coll");
-    }
-    
-    var GameInfo=document.getElementById('gamesData')
-        GameInfo.appendChild(cols)
+        //Open the log and try to access any game picture by coping any image url and display it 
+        //  All of them is not exist
+        
+        // if you replace the src of img the the img below it will work but it will give same image in all cards
+        //https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQo23tYn4lKpHQfnMMHNWcf3pSMyg3wNQrJT2yFJSHA&s
 
-// console.log("displayyyyyyyyyyyyyy")
+        console.log(element['game_url'])
+    });
 
+    document.getElementById('gamesData').innerHTML=cols
 }
 
 
