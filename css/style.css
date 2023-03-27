@@ -1,9 +1,10 @@
+
 #home{
-    height: 700px;
-    width: 100%;
+    background-attachment: fixed;
     background-image: url(../img/bg.jpg);
     background-size: 100% 100%;
-    overflow: hidden;
+    
+   
 }
 .overlay{
     background-color: rgba(0, 0, 0,0.7);
@@ -14,4 +15,47 @@
 .navbar{
     background-color: #457b9d;
     color: white !important;
+    transition: all 1s;
+}
+.navbar .nav-item:hover a{
+color: blue;
+}
+.game{
+    background-color: rgba(0, 0, 0,0.7);
+    border-radius: 3%;
+    transition: all 1s;
+    height: 380;
+}
+.game:hover{
+    transform: scale(1.1);
+}
+#img{
+    height: 250px !important;
+}
+.game .btn{
+    background-color: #457b9d;
+    color: white;
+}
+
+.modal-content{
+    width: 700px !important;
+}
+
+#exampleModalLabel{
+    color: #457b9d;
+    font-family: 'Lobster', cursive;  
+    font-weight: bold;
+    font-size: 20px;
+}
+h1{
+    color: #457b9d;
+    font-family: 'Lobster', cursive;  
+    font-weight: bold;
+    font-size: 20px;  
+}
+span{
+    color: #457b9d;
+    font-weight: bold;
+    font-size: 20px;
+    font-family: 'Lobster', cursive;
 }

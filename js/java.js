@@ -5,33 +5,44 @@ const options = {
 		'X-RapidAPI-Host': 'free-to-play-games-database.p.rapidapi.com'
 	}
 };
+
+
+
+getGame('Shooter')
+
+var links=document.querySelectorAll('.navbar .nav-link');
+for(var i=0;i<links.length;i++){
+    links[i].addEventListener('click',function(e){
+        getGame(e.target.text);
+    })
+}
+
 var games=[];
-async function getGame(){
-    var response=await fetch('https://free-to-play-games-database.p.rapidapi.com/api/games?category=Shooter', options);
+async function getGame(game){
+    var response=await fetch(`https://free-to-play-games-database.p.rapidapi.com/api/games?category=${game}`, options);
     var games=await response.json();
+    console.log(games);
     display(games)
 }
-getGame();
+
 
 function display(myGames){
     var cols=""
     myGames.forEach(element => {
         cols+=`
-        <div class="col-md-3">
-        <div class="game overflow-hidden ">  
-        <img class="w-100  recipesStyle" src="${element['game_url']}" id="img">
-        <h6 class="pt-4">${element['title']}</h6>
-        <h5>${element['short_description'] }</h5>   
+        <div class="col-lg-4 col-md-6 col-sm-12 rounded-2">
+        <div class="game overflow-hidden">    
+        <img class="w-100" src="${element['thumbnail']}" alt="game image">
+                 <div class="content p-2">
+                 <h4 class=" fw-bold">${element['title']}</h4>          
+                 <h6>${element['short_description'] }</h6>  
+                 <a href="${element['freetogame_profile_url']}" class="btn text-light my-3" target="_blank" >Play game</a>
+                 <a  onclick='getDetails(${element['id']})'  class="btn text-light my-3 ms-5" data-bs-toggle="modal" data-bs-target="#exampleModal">Details</a>
+               
+                 </div>
         </div>
         </div>
         `
-        //Open the log and try to access any game picture by coping any image url and display it 
-        //  All of them is not exist
-        
-        // if you replace the src of img the the img below it will work but it will give same image in all cards
-        //https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQo23tYn4lKpHQfnMMHNWcf3pSMyg3wNQrJT2yFJSHA&s
-
-        console.log(element['game_url'])
     });
 
     document.getElementById('gamesData').innerHTML=cols
@@ -39,6 +50,19 @@ function display(myGames){
 
 
 
+async function getDetails(gameId){
+var response=await fetch(`https://free-to-play-games-database.p.rapidapi.com/api/game?id=${gameId}`,options);
+var gameDetails=await response.json();
+console.log(gameDetails);
+document.getElementById('exampleModalLabel').innerHTML=`${gameDetails.title}`;
+var game=`
+<img class="w-100 h-50" src="${gameDetails.thumbnail}" id="img" alt="game" image>
+<p class="pt-3"><span>developer :  </span> ${gameDetails.developer}</p>
+<p><span>Description :  </span>  ${gameDetails.description}</p>
+`
+document.getElementById('gameInfo').innerHTML=game;
+
+}  
 
 
 
@@ -53,73 +77,3 @@ function display(myGames){
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// getGame('Shooter')
-
-// var links=document.querySelectorAll('.navbar .nav-link');
-// for(var i=0;i<links.length;i++){
-//     links[i].addEventListener('click',function(e){
-//         getGame(e.target.text);
-//     })
-// }
-
-// var games=[];
-// async function getGame(game){
-//     var response=await fetch(`https://free-to-play-games-database.p.rapidapi.com/api/games?category=${game}`, options);
-//     var games=await response.json();
-//     console.log(games);
-    
- 
-// }
-
-// function display(){
-//     var cols='';
-//     for(var i=0;i<games.length;i++){
-//         cols+=`
-//         <div class="col-md-3 pt-3">
-//         <div class="recipe overflow-hidden ">  
-//         <img class="w-100  recipesStyle" src="${games[i].game_url}" id="img">
-//         <h6 class="pt-4">${games[i].title}</h6>
-//         <h5>${games[i].short_description }</h5>
-//          <a  class="btn text-light my-3">${games[i].platform}</a>
-//          <a  onclick='getDetails(${games[i].id})'  class="btn text-light my-3" target="_blank"> Details</a>
-        
-         
-//         </div>
-//         </div>
-//         `
-//     }
-// document.getElementById('gamesData').innerHTML=cols;
-
-// }
-
-
-// async function getDetails(gameId){
-// var response=await fetch(`https://free-to-play-games-database.p.rapidapi.com/api/game?id=${gameId}`,options);
-// var gameDetails=await response.json();
-// var gameDetails=gameDetails.recipe;
-// var game=`
-// <img class="w-100 py-3 recipesStyle " src="${gameDetails.image_url}" id="img">
-// <h3>${recipeDetails.publisher}</h3>
-// <h4>${recipeDetails.title}</h4>
-// <h6>${recipeDetails.ingredients}</h6>
-// `
-// document.getElementById('gameInfo').innerHTML=game;
-
-// }  
