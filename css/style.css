@@ -1,13 +1,12 @@
-
-#home{
-    background-attachment: fixed;
+body{
     background-image: url(../img/bg.jpg);
-    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
     
-   
 }
+
 .overlay{
-    background-color: rgba(0, 0, 0,0.7);
+    background-color: rgba(0, 0, 0,0.8);
 }
 .navbar-brand{
     font-family: 'Lobster', cursive;
@@ -29,6 +28,12 @@ color: blue;
 .game:hover{
     transform: scale(1.1);
 }
+.btonDetails{
+    background-color: #457b9d;
+}
+h6{
+    line-height: 22px;
+}
 #img{
     height: 250px !important;
 }
@@ -36,16 +41,24 @@ color: blue;
     background-color: #457b9d;
     color: white;
 }
-
 .modal-content{
     width: 700px !important;
 }
-
+#exampleModal{
+    background-color: black !important;
+}
+.modal-content{
+    background-color: black !important;
+}
 #exampleModalLabel{
     color: #457b9d;
     font-family: 'Lobster', cursive;  
     font-weight: bold;
     font-size: 20px;
+}
+h4{
+    color: #457b9d;
+    font-family: 'Lobster', cursive; 
 }
 h1{
     color: #457b9d;
