@@ -70,7 +70,6 @@ var game=`
 
 <p class="pt-3"><span>Description :  </span>  ${gameDetails.description}</p>
 <a href="${gameDetails.freetogame_profile_url}" class="btn text-light my-3 btonDetails px-4 py-2" target="_blank" >Try Game</a>          
-<button type="button" class="btn text-light my-3 btonDetails px-4 py-2" data-bs-dismiss="modal" aria-label="Close">Close</button>
 
 `
 document.getElementById('gameInfo').innerHTML=game;

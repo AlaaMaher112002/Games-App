@@ -50,6 +50,7 @@ h6{
 }
 .modal-content{
     background-color: black !important;
+
 }
 #exampleModalLabel{
     color: #457b9d;
@@ -75,4 +76,14 @@ span{
 }
 .nav-item .nav-link{
     cursor: pointer  !important;
+}
+
+
+.navbar ul li a{
+    transition: all 0.5s;
+}
+
+.navbar ul li a:hover{
+    color:#faedcd !important;
+    border-bottom: 2px solid #faedcd ;
 }
